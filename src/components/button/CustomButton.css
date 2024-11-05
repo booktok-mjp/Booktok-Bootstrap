@@ -1,0 +1,75 @@
+.btn-container.sm {
+  width: 100px;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 30px;
+}
+
+.btn-container.md {
+  width: 150px;
+  font-size: 14px;
+  padding: 8px 15px;
+  border-radius: 30px;
+}
+
+.btn-container.lg {
+  width: 200px;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 30px;
+}
+
+.btn-navy-blue {
+  background-color: var(--navy-blue) !important;
+  color: var(--soft-gold) !important;
+  border: 1px solid var(--soft-gold) !important;
+}
+
+.btn-navy-blue:hover {
+  background-color: var(--soft-gold) !important;
+  color: var(--navy-blue) !important;
+}
+
+.btn-wine-red {
+  background-color: var(--wine-red) !important;
+  color: var(--cream) !important;
+  border: 1px solid var(--cream) !important;
+}
+
+.btn-wine-red:hover {
+  background-color: var(--cream) !important;
+  color: var(--wine-red) !important;
+}
+
+.btn-forest-green {
+  background-color: var(--forest-green) !important;
+  color: var(--soft-gold) !important;
+  border: 1px solid var(--soft-gold) !important;
+}
+
+.btn-forest-green:hover {
+  background-color: var(--soft-gold) !important;
+  color: var(--forest-green) !important;
+}
+
+.btn-dark-slate-gray {
+  background-color: var(--dark-slate-gray) !important;
+  color: var(--bone) !important;
+  border: 1px solid var(--bone) !important;
+}
+
+.btn-dark-slate-gray:hover {
+  background-color: var(--bone) !important;
+  color: var(--dark-slate-gray) !important;
+}
+
+.btn-paynes-gray {
+  background-color: var(--paynes-gray) !important;
+  color: var(--soft-gold) !important;
+  border: 1px solid var(--soft-gold) !important;
+}
+
+.btn-paynes-gray:hover {
+  background-color: var(--soft-gold) !important;
+  color: var(--paynes-gray) !important;
+}

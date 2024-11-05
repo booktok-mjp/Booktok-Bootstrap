@@ -1,0 +1,24 @@
+.icon-btn {
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.icon-btn.sm {
+  width: 40px;
+  height: 40px;
+}
+
+.icon-btn.lg {
+  width: 60px;
+  height: 60px;
+}
+
+.icon-btn:hover {
+  background-color: var(--cream) !important;
+  color: var(--navy-blue) !important;
+}
