@@ -1,0 +1,18 @@
+.custom-header {
+  text-align: center;
+  border-radius: 5px;
+  font-family: 'Arial', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.custom-header.sm {
+  font-size: 16px;
+}
+
+.custom-header.md {
+  font-size: 24px;
+}
+
+.custom-header.lg {
+  font-size: 32px;
+}
