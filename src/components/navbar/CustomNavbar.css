@@ -1,0 +1,41 @@
+.custom-navbar {
+  background: linear-gradient(
+    175deg,
+    var(--dark-slate-gray),
+    var(--paynes-gray)
+  );
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.467);
+  height: 100px;
+}
+
+.navbar-link {
+  font-size: 16px;
+  color: var(--ivory);
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  transition: all 0.3s ease;
+}
+
+.navbar-link .navbar-icon {
+  margin-right: 10px;
+}
+
+.navbar-link:hover {
+  color: var(--beaver-2);
+  transform: translateX(5px);
+}
+
+.navbar-nav {
+  margin-left: auto;
+}
+
+.offcanvas-logo {
+  max-width: 90%;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+.offcanvas-logo:hover {
+  opacity: 1;
+}
