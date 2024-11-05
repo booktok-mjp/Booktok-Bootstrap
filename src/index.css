@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=New+Amsterdam&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+* {
+  margin: 0;
+  font-family: 'Source Sans 3', sans-serif;
+}
+
+:root {
+  --navy-blue: #2c3e50;
+  --soft-gold: #d4af37;
+  --cream: #faf3e0;
+  --wine-red: #8b0000;
+  --forest-green: #2e8b57;
+  --dark-slate: #2f4f4f;
+  --ivory: #fffff0;
+  --paynes-gray: #3d5c6cff;
+  --dark-slate-gray: #355456ff;
+  --brunswick-green: #2c4c3fff;
+  --battleship-gray: #848d81ff;
+  --bone: #dbcec2ff;
+  --beaver: #977e70ff;
+  --beaver-2: #a08a7dff;
+}
+
+.new-amsterdam-regular {
+  font-family: 'New Amsterdam', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.new-amsterdam-bold {
+  font-family: 'New Amsterdam', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.source-sans-3-regular {
+  font-family: 'Source Sans 3', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.source-sans-3-bold {
+  font-family: 'Source Sans 3', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.pacifico-regular {
+  font-family: 'Pacifico', cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.pacifico-regular-small {
+  font-family: 'Pacifico', cursive;
+  font-style: normal;
+  font-size: 16pt;
+}
+
+.pacifico-regular-medium {
+  font-family: 'Pacifico', cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 24pt;
+}
+
+.pacifico-regular-large {
+  font-family: 'Pacifico', cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 36pt;
+}
+
+.pacifico-regular-header {
+  font-family: 'Pacifico', cursive;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 100pt;
+
+  @media (max-width: 500px) {
+    font-size: 50pt;
+  }
+}

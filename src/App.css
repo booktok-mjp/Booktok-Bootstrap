@@ -1,0 +1,9 @@
+.main-app-container {
+  background-image: url('/src/assets/images/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  height: auto;
+  width: 100%;
+}
