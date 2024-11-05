@@ -1,0 +1,16 @@
+export default {
+  navyBlue: '#2c3e50',
+  softGold: '#d4af37',
+  cream: '#faf3e0',
+  wineRed: '#8b0000',
+  forestGreen: '#2e8b57',
+  darkSlate: '#2f4f4f',
+  ivory: '#fffff0',
+  paynesGray: '#3d5c6cff',
+  darkSlateGray: '#355456ff',
+  brunswickGreen: '#2c4c3fff',
+  battleshipGray: '#848d81ff',
+  bone: '#dbcec2ff',
+  beaver: '#977e70ff',
+  beaver2: '#a08a7dff',
+};
