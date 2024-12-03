@@ -4,24 +4,25 @@ import { GiBookshelf } from 'react-icons/gi';
 import { BsFillTrashFill } from 'react-icons/bs';
 
 import CustomHeader from '../../header/CustomHeader';
-import useBookcase from '../../../hooks/useBookcase';
-import { Colors, Constants } from '../../../config';
-import bookImg from '../../../assets/images/books.png';
-import './MiniBookcase.css';
 import ReactIconButton from '../../button/ReactIconButton';
-import { useAuth0 } from '@auth0/auth0-react';
+import bookImg from '../../../assets/images/books.png';
+import { Colors, Constants } from '../../../config';
 import { deletedBookFromBookcase } from '../../../services/bookcaseService';
 
-const MiniBookcase = () => {
-  const { books, error, loading } = useBookcase();
-  const { getAccessTokenSilently, user } = useAuth0();
+import './MiniBookcase.css';
+import { useAuth0 } from '@auth0/auth0-react';
+
+const MiniBookcase = ({ books, fetchBookcase }) => {
+  const { getAccessTokenSilently } = useAuth0();
 
   const handleRemoveBook = async (bookId) => {
     try {
       const token = await getAccessTokenSilently();
-      //! fix user id situation
-      const data = await deletedBookFromBookcase({ token, bookId });
-    } catch (error) {}
+      await deletedBookFromBookcase({ token, bookId });
+      fetchBookcase();
+    } catch (error) {
+      console.error('Error deleting book:', error);
+    }
   };
 
   return (
@@ -38,12 +39,10 @@ const MiniBookcase = () => {
             color={Colors.brunswickGreen}
           />
         </div>
-
         <ListGroup as="ol" className="p-3">
-          {books && books.length === 0 ? (
+          {books.length === 0 ? (
             <p>No books in the bookcase yet.</p>
           ) : (
-            books &&
             books.map((book) => (
               <ListGroup.Item
                 as="li"
