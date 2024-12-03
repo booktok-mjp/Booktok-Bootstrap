@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { getLoggedInUsersBookcase } from '../services/bookcaseService';
 
@@ -9,25 +9,25 @@ const useBookcase = () => {
 
   const { getAccessTokenSilently } = useAuth0();
 
-  useEffect(() => {
-    const fetchBookcase = async () => {
-      try {
-        setLoading(true);
-        const token = await getAccessTokenSilently();
-        const books = await getLoggedInUsersBookcase(token);
-        setBooks(books.books);
-        setLoading(false);
-      } catch (error) {
-        setLoading(false);
-        console.error(error);
-        setError(error);
-      }
-    };
-
-    fetchBookcase();
+  const fetchBookcase = useCallback(async () => {
+    try {
+      setLoading(true);
+      const token = await getAccessTokenSilently();
+      const bookcase = await getLoggedInUsersBookcase(token);
+      setBooks(bookcase.books);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.error('Error fetching bookcase:', error);
+      setError(error);
+    }
   }, [getAccessTokenSilently]);
 
-  return { books, error, loading };
+  useEffect(() => {
+    fetchBookcase();
+  }, []);
+
+  return { books, error, loading, fetchBookcase };
 };
 
 export default useBookcase;
