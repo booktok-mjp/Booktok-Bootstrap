@@ -16,3 +16,18 @@ export const getAllBooks = async (token) => {
     throw error;
   }
 };
+
+export const getOneBook = async ({ token, bookId }) => {
+  try {
+    const response = await axios.get(`${PATH}/${bookId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log('response', response.data);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};

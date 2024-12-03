@@ -24,7 +24,7 @@ export const getUserBookcaseById = async ({ token, userId }) => {
         Authorization: `Bearer ${token}`,
       },
     });
-
+    console.log('response', response);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -32,16 +32,36 @@ export const getUserBookcaseById = async ({ token, userId }) => {
   }
 };
 
-export const deletedBookFromBookcase = async ({ token, bookId, userId }) => {
+export const deletedBookFromBookcase = async ({ token, bookId }) => {
   try {
-    const response = await axios.delete(`${PATH}/book/${bookId}/${userId}`, {
+    const response = await axios.delete(`${PATH}/book/${bookId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-    return response.data;
+    console.log('response', response);
+    return response;
   } catch (error) {
     console.error('error deleting book from bookcase', error);
+    throw error;
+  }
+};
+
+export const addBookToBookcase = async ({ token, bookId }) => {
+  try {
+    const response = await axios.post(
+      `${PATH}/book/${bookId}`,
+      {}, // empty payload
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    console.log('response', response);
+    return response.data;
+  } catch (error) {
+    console.error('error adding book to bookcase', error);
     throw error;
   }
 };
