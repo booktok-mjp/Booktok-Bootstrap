@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Col, Container, Row } from 'react-bootstrap';
 
@@ -10,15 +10,34 @@ import CustomCard from '../../components/card/CustomCard';
 import RecommendationCard from '../../components/recommendation/RecommendationCard';
 import useAllBooks from '../../hooks/book/useAllBooks';
 import colors from '../../config/colors';
+import CustomAlert from '../../components/alert/CustomAlert';
+import { getLoggedInUsersBookcase } from '../../services/bookcaseService';
 
 const HomeView = () => {
-  const { user } = useAuth0();
+  const { getAccessTokenSilently } = useAuth0();
   const { allBooks } = useAllBooks();
   const [filteredBooks, setFilteredBooks] = useState([]);
+  const [bookcaseBooks, setBookcaseBooks] = useState([]);
+  const [showAlert, setShowAlert] = useState(false);
+  const [alert, setAlert] = useState({ body: '', heading: '', variant: '' });
+
+  const fetchBookcase = useCallback(async () => {
+    try {
+      const token = await getAccessTokenSilently();
+      const bookcase = await getLoggedInUsersBookcase(token);
+      setBookcaseBooks(bookcase.books);
+    } catch (error) {
+      console.error('Error fetching bookcase:', error);
+    }
+  }, [getAccessTokenSilently]);
 
   useEffect(() => {
     setFilteredBooks(allBooks);
   }, [allBooks]);
+
+  useEffect(() => {
+    fetchBookcase();
+  }, [fetchBookcase]);
 
   const handleSearch = (searchResults) => {
     setFilteredBooks(searchResults);
@@ -30,7 +49,9 @@ const HomeView = () => {
       <CustomCard
         key={book.id}
         book={book}
-        onAddToBookcase={() => handleAddBook(book)}
+        setAlert={setAlert}
+        setShowAlert={setShowAlert}
+        fetchBookcase={fetchBookcase}
       />
     ));
 
@@ -52,13 +73,25 @@ const HomeView = () => {
           xs={12}
           className="d-flex flex-column align-items-center mb-4"
         >
-          <MiniBookcase />
+          <MiniBookcase
+            books={bookcaseBooks}
+            fetchBookcase={fetchBookcase}
+            setAlert={setAlert}
+          />
           <RecommendationCard />
         </Col>
         <Col lg={8} xs={12}>
           <CustomGrid items={customBookCards} />
         </Col>
       </Row>
+      {showAlert && (
+        <CustomAlert
+          body={alert.body}
+          heading={alert.heading}
+          variant={alert.variant}
+          setShowAlert={setShowAlert}
+        />
+      )}
     </Container>
   );
 };
