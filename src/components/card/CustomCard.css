@@ -4,6 +4,11 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 8px;
+  transition: transform 0.3s ease;
+}
+
+.custom-card:hover {
+  transform: scale(1.05);
 }
 
 .custom-card-img-container {
@@ -13,6 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .custom-card-img {
