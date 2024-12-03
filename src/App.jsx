@@ -7,6 +7,7 @@ import HomeView from './views/home/HomeView';
 import './App.css';
 import CustomNavbar from './components/navbar/CustomNavbar';
 import BookcaseView from './views/bookcase/BookcaseView';
+import BookDetailView from './views/bookdetail/BookDetailView';
 
 const App = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
@@ -24,6 +25,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<HomeView />} />
             <Route path="/mybookcase" element={<BookcaseView />} />
+            <Route path="/book/:bookId" element={<BookDetailView />} />
           </Routes>
         </>
       ) : (
