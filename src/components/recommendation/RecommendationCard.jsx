@@ -7,6 +7,7 @@ import { Colors, Constants } from '../../config';
 import CustomHeader from '../header/CustomHeader';
 import CustomIconButton from '../button/CustomIconButton';
 
+// ! add functionality
 const RecommendationCard = () => {
   const [index, setIndex] = useState(0);
 
@@ -38,20 +39,20 @@ const RecommendationCard = () => {
         >
           <Carousel.Item>
             <ListGroup.Item className="d-flex align-items-center">
-              <CustomIconButton src={book} />
-              <span>Book Title</span>
+              <CustomIconButton size="sm" src={book} />
+              <span className="mx-1">Book Title</span>
             </ListGroup.Item>
           </Carousel.Item>
           <Carousel.Item>
             <ListGroup.Item className="d-flex align-items-center">
-              <CustomIconButton src={book} />
-              <span>Book Title</span>
+              <CustomIconButton size="sm" src={book} />
+              <span className="mx-1">Book Title</span>
             </ListGroup.Item>
           </Carousel.Item>
           <Carousel.Item>
             <ListGroup.Item className="d-flex align-items-center">
-              <CustomIconButton src={book} />
-              <span>Book Title</span>
+              <CustomIconButton size="sm" src={book} />
+              <span className="mx-1">Book Title</span>
             </ListGroup.Item>
           </Carousel.Item>
         </Carousel>
