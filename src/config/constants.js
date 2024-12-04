@@ -6,4 +6,5 @@ export default {
   myBookcase: 'My Bookcase',
   myMinicase: 'My Minicase',
   recommendations: 'Recommendations for You',
+  discussions: 'Discussions',
 };

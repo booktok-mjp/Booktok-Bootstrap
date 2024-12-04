@@ -8,7 +8,7 @@ const BodyText = ({ text }) => {
         fontSize: '12pt',
         marginTop: '6px',
         color: Colors.battleshipGray,
-        marginLeft: '7px',
+        // marginLeft: '7px',
       }}
     >
       {text}
