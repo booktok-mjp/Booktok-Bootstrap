@@ -71,14 +71,6 @@ const CustomNavbar = () => {
               <Nav.Link
                 style={{ color: Colors.cream }}
                 className="navbar-link"
-                href="/discover"
-              >
-                <BsFillBookFill className="navbar-icon" fontSize={30} />
-                Discover
-              </Nav.Link>
-              <Nav.Link
-                style={{ color: Colors.cream }}
-                className="navbar-link"
                 href="/mybookcase"
               >
                 <BsCollectionFill className="navbar-icon" fontSize={30} />
