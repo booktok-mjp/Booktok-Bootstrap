@@ -8,6 +8,8 @@ import './App.css';
 import CustomNavbar from './components/navbar/CustomNavbar';
 import BookcaseView from './views/bookcase/BookcaseView';
 import BookDetailView from './views/bookdetail/BookDetailView';
+import DiscussionView from './views/discussion/DiscussionView';
+import ThreadView from './views/discussion/ThreadView';
 
 const App = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
@@ -26,6 +28,8 @@ const App = () => {
             <Route path="/" element={<HomeView />} />
             <Route path="/mybookcase" element={<BookcaseView />} />
             <Route path="/book/:bookId" element={<BookDetailView />} />
+            <Route path="/discussions" element={<DiscussionView />} />
+            <Route path="/discussions/:threadId" element={<ThreadView />} />
           </Routes>
         </>
       ) : (
