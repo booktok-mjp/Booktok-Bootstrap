@@ -1,0 +1,36 @@
+.single-thread-container {
+  background-color: var(--beaver);
+  border-radius: 8px;
+}
+
+.thread-details-container {
+  background-color: var(--cream);
+  border-radius: 8px;
+}
+
+.message-list-container {
+  background-color: var(--beaver);
+  border-radius: 8px;
+}
+
+.message-item {
+  border: none;
+  background-color: var(--bone);
+  border-radius: 6px;
+  margin-bottom: 8px;
+  transition: transform 0.2s ease;
+}
+
+.message-item:hover {
+  transform: scale(1.02);
+}
+
+.add-message-container {
+  background-color: var(--ivory);
+  border-radius: 8px;
+}
+
+.message-list {
+  overflow-y: auto;
+  max-height: 40vh;
+}

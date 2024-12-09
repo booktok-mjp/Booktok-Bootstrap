@@ -31,3 +31,49 @@ export const getLoggedInUsersThreads = async (token) => {
     throw error;
   }
 };
+
+export const getThreadById = async ({ token, threadId }) => {
+  try {
+    const response = await axios.get(`${PATH}/${threadId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log('response', response.data);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
+export const addMessageToThread = async ({ token, message, threadId }) => {
+  try {
+    const response = await axios.put(`${PATH}/${threadId}`, message, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log('response', response.data);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
+export const addNewThread = async ({ token, thread }) => {
+  console.log('thread in service: ', thread);
+  try {
+    const response = await axios.post(`${PATH}`, thread, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log('response', response.data);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};

@@ -1,10 +1,14 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import SingleThread from '../../components/thread/SingleThread';
 
 const ThreadView = () => {
   const { threadId } = useParams();
-  console.log(threadId);
-  return <div>ThreadView</div>;
+  return (
+    <div>
+      <SingleThread threadId={threadId} />
+    </div>
+  );
 };
 
 export default ThreadView;

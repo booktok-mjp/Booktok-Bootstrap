@@ -4,7 +4,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 
 const ThreadList = ({ threads }) => {
   return (
-    <ListGroup as="ol">
+    <ListGroup as="ol" className="overflow-y-auto">
       {threads &&
         threads.map((thread) => (
           <ThreadListItem key={thread.id} thread={thread} />
