@@ -1,0 +1,5 @@
+.thread-container-discussion {
+  background-color: var(--battleship-gray);
+  border-radius: 10px;
+  padding: 10px;
+}
