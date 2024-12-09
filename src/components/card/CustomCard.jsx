@@ -8,17 +8,20 @@ import { FaBookReader } from 'react-icons/fa';
 
 import ReactIconButton from '../button/ReactIconButton';
 import { Colors } from '../../config';
-import { addBookToBookcase } from '../../services/bookcaseService';
+import {
+  addBookToBookcase,
+  deletedBookFromBookcase,
+} from '../../services/bookcaseService';
 import BodyText from '../typography/BodyText';
 
 import './CustomCard.css';
+import { BsFillTrashFill } from 'react-icons/bs';
 
 const CustomCard = ({
   book,
   showAddBtn = true,
-  setAlert,
-  setShowAlert,
   fetchBookcase,
+  isBookcaseView,
 }) => {
   const { getAccessTokenSilently } = useAuth0();
   const navigate = useNavigate();
@@ -31,18 +34,20 @@ const CustomCard = ({
     try {
       const token = await getAccessTokenSilently();
       const response = await addBookToBookcase({ token, bookId });
-      if (response.status === 400) {
-        setAlert({
-          heading: 'Oh no!',
-          body: 'An error occured while adding this book to your bookcase. Please try again!',
-          variant: 'danger',
-        });
-        setShowAlert(true);
-      } else {
-        await fetchBookcase();
-      }
+      console.log('response', response);
+      await fetchBookcase();
     } catch (error) {
       console.error('Error adding book', error);
+    }
+  };
+
+  const handleRemoveBook = async (bookId) => {
+    try {
+      const token = await getAccessTokenSilently();
+      await deletedBookFromBookcase({ token, bookId });
+      await fetchBookcase();
+    } catch (error) {
+      console.error('Error deleting book:', error);
     }
   };
 
@@ -77,19 +82,28 @@ const CustomCard = ({
         className="text-center align-items-end"
         style={{ backgroundColor: Colors.ivory }}
       >
-        {showAddBtn ? (
-          <ReactIconButton
-            icon={<BiBookAdd />}
-            onClick={() => handleAddToBookcase(book.id)}
-            tooltipText="Add to Bookcase"
-          />
-        ) : (
-          <ReactIconButton
-            icon={<FaBookReader />}
-            onClick={() => handleSetReadingNow(book.id)}
-            tooltipText="Set to Reading Now"
-          />
-        )}
+        <div className="d-flex justify-content-between w-100">
+          {showAddBtn ? (
+            <ReactIconButton
+              icon={<BiBookAdd />}
+              onClick={() => handleAddToBookcase(book.id)}
+              tooltipText="Add to Bookcase"
+            />
+          ) : (
+            <ReactIconButton
+              icon={<FaBookReader />}
+              onClick={() => handleSetReadingNow(book.id)}
+              tooltipText="Set to Reading Now"
+            />
+          )}
+          {isBookcaseView && (
+            <ReactIconButton
+              icon={<BsFillTrashFill />}
+              onClick={() => handleRemoveBook(book.id)}
+              tooltipText="Delete from Bookcase"
+            />
+          )}
+        </div>
       </Card.Body>
     </Card>
   );
