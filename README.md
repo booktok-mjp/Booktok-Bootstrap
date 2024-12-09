@@ -12,12 +12,20 @@ Book Tok is a full-featured web application designed for book enthusiasts. It al
 
 ## Technologies Used
 
-- **Frontend**: React, React-Bootstrap for styling, React Router for navigation
-- **Backend**: Java Spring Boot & Postgresql
+- React: Frontend library.
+- React Bootstrap: For styling and responsive UI components.
+- Axios: For making HTTP requests.
+- React Router: For client-side routing.
+- Auth0: For user authentication and authorization.
 
 ## Installation
 
-1. Clone the repository:
+- Must have backend repo cloned and running: https://github.com/booktok-mjp/BooktokAPI
+
+1. Clone the repository: `git clone https://github.com/booktok-mjp/Booktok-Bootstrap`
 2. Navigate to project directory
-3. `npm install`
-4. `npm run dev`
+3. Set up Auth0 environmental variables
+4. `npm install`
+5. `npm run dev`
+
+Developmental server will be running on http://localhost:5173/
