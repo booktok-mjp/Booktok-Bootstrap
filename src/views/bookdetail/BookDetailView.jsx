@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useParams } from 'react-router-dom';
-import { getOneBook } from '../../services/bookService';
 
-import './BookDetailView.css';
+import { getOneBook } from '../../services/bookService';
 import BookDetailCard from '../../components/card/BookDetailCard';
 import RelatedBooks from '../../components/relatedbooks/RelatedBooks';
-import { Row } from 'react-bootstrap';
+
+import './BookDetailView.css';
 
 const BookDetailView = () => {
   const [currentBook, setCurrentBook] = useState(null);
