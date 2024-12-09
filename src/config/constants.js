@@ -7,4 +7,6 @@ export default {
   myMinicase: 'My Minicase',
   recommendations: 'Recommendations for You',
   discussions: 'Discussions',
+  welcome: 'Welcome to Booktok...',
+  relatedBooks: 'Related Books',
 };
