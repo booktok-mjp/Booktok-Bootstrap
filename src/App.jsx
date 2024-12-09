@@ -3,21 +3,16 @@ import { Route, Routes } from 'react-router-dom';
 
 import LandingView from './views/landing/LandingView';
 import HomeView from './views/home/HomeView';
-
-import './App.css';
 import CustomNavbar from './components/navbar/CustomNavbar';
 import BookcaseView from './views/bookcase/BookcaseView';
 import BookDetailView from './views/bookdetail/BookDetailView';
 import DiscussionView from './views/discussion/DiscussionView';
 import ThreadView from './views/discussion/ThreadView';
 
-const App = () => {
-  const { user, isAuthenticated, isLoading } = useAuth0();
-  console.log('user data', user);
+import './App.css';
 
-  if (isLoading) {
-    return <div>Loading ...</div>;
-  }
+const App = () => {
+  const { isAuthenticated } = useAuth0();
 
   return (
     <div className="main-app-container">

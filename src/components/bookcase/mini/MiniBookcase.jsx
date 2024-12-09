@@ -1,4 +1,5 @@
 import React from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
 import { Card, ListGroup } from 'react-bootstrap';
 import { GiBookshelf } from 'react-icons/gi';
 import { BsFillTrashFill } from 'react-icons/bs';
@@ -10,7 +11,6 @@ import { Colors, Constants } from '../../../config';
 import { deletedBookFromBookcase } from '../../../services/bookcaseService';
 
 import './MiniBookcase.css';
-import { useAuth0 } from '@auth0/auth0-react';
 
 const MiniBookcase = ({ books, fetchBookcase }) => {
   const { getAccessTokenSilently } = useAuth0();
