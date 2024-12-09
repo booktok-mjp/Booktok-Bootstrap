@@ -87,7 +87,7 @@ const CustomNavbar = () => {
               <Nav.Link
                 style={{ color: Colors.cream }}
                 className="navbar-link"
-                href="/discussions"
+                href="/"
                 onClick={() => logout({ logoutParams: { returnTo: '/' } })}
               >
                 <IoLogOut className="navbar-icon" fontSize={30} />
