@@ -12,10 +12,11 @@ import useAllBooks from '../../hooks/book/useAllBooks';
 import colors from '../../config/colors';
 import CustomAlert from '../../components/alert/CustomAlert';
 import { getLoggedInUsersBookcase } from '../../services/bookcaseService';
+import LoadingSpinner from '../../components/spinner/LoadingSpinner';
 
 const HomeView = () => {
   const { getAccessTokenSilently } = useAuth0();
-  const { allBooks } = useAllBooks();
+  const { allBooks, loading } = useAllBooks();
   const [filteredBooks, setFilteredBooks] = useState([]);
   const [bookcaseBooks, setBookcaseBooks] = useState([]);
   const [showAlert, setShowAlert] = useState(false);
@@ -54,6 +55,10 @@ const HomeView = () => {
         fetchBookcase={fetchBookcase}
       />
     ));
+
+  if (loading) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <Container>
