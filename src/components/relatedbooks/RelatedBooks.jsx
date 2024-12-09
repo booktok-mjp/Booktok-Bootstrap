@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 
 import useAllBooks from '../../hooks/book/useAllBooks';
 import CustomCard from '../card/CustomCard';
+import CustomHeader from '../header/CustomHeader';
+import { Constants } from '../../config';
 
 const RelatedBooks = () => {
   const { allBooks: books } = useAllBooks();
@@ -10,7 +12,7 @@ const RelatedBooks = () => {
 
   return (
     <div className="w-75 m-auto mt-5">
-      <h2 className="related-books-title mb-4">Related Books</h2>
+      <CustomHeader text={Constants.relatedBooks} size="lg" />
       <div className="d-flex justify-content-around flex-wrap mt-5">
         {books
           .filter((book) => book.id !== bookId)
