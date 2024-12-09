@@ -1,1 +1,10 @@
+.bookcase-view-container {
+  position: relative;
+}
 
+.sticky-col {
+  position: sticky;
+  top: 130px;
+  height: fit-content;
+  z-index: 100;
+}
