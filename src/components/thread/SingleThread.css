@@ -6,6 +6,7 @@
 .thread-details-container {
   background-color: var(--cream);
   border-radius: 8px;
+  padding: 20px;
 }
 
 .message-list-container {
@@ -28,9 +29,11 @@
 .add-message-container {
   background-color: var(--ivory);
   border-radius: 8px;
+  padding: 20px;
 }
 
 .message-list {
   overflow-y: auto;
   max-height: 40vh;
+  background-color: var(--beaver);
 }

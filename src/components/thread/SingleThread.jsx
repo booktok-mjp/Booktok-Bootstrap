@@ -45,46 +45,45 @@ const SingleThread = ({ threadId }) => {
       {thread && (
         <>
           {/* Thread Details */}
-          <Card
+          <div
             className="thread-details-container mb-4 shadow-sm"
             bg={Colors.cream}
           >
-            <Card.Body>
+            <div>
               <p className="source-sans-3-bold fs-3"> {thread.title}</p>
               <p className="thread-book mt-2">
                 <strong>Book:</strong> {thread.book}
               </p>
               <p className="thread-subject mt-2">{thread.subject}</p>
-            </Card.Body>
-          </Card>
+            </div>
+          </div>
 
           {/* Messages */}
-          <Card className="message-list-container mb-4 shadow-sm">
-            <Card.Body>
-              <ListGroup className="message-list">
-                {thread.messages.length > 0 ? (
-                  thread.messages.map((message) => (
-                    <ListGroup.Item
-                      key={message.id}
-                      className="message-item py-2 d-flex justify-content-start align-items-start"
-                    >
-                      <div>
-                        <p className="message-author mb-1">
-                          <strong>User:</strong> {message.user_id}
-                        </p>
-                        <p className="message-content">{message.content}</p>
-                      </div>
-                    </ListGroup.Item>
-                  ))
-                ) : (
-                  <BodyText text="No Messages..." />
-                )}
-              </ListGroup>
-            </Card.Body>
-          </Card>
+          <div className="message-list-container mb-4 shadow-sm">
+            <ListGroup className="message-list">
+              {thread.messages.length > 0 ? (
+                thread.messages.map((message) => (
+                  <ListGroup.Item
+                    key={message.id}
+                    className="message-item py-2 d-flex justify-content-start align-items-start"
+                    variant="light"
+                  >
+                    <div>
+                      <p className="message-author mb-1">
+                        <strong>User:</strong> {message.user_id}
+                      </p>
+                      <p className="message-content">{message.content}</p>
+                    </div>
+                  </ListGroup.Item>
+                ))
+              ) : (
+                <BodyText text="No Messages..." />
+              )}
+            </ListGroup>
+          </div>
 
           {/* Add Message */}
-          <Card className="add-message-container shadow-sm">
+          <div className="add-message-container shadow-sm">
             <Card.Body>
               <Form onSubmit={handleSubmit}>
                 <Form.Group controlId="newMessage" className="mb-3">
@@ -101,7 +100,7 @@ const SingleThread = ({ threadId }) => {
                 </Form.Group>
                 <Button
                   type="submit"
-                  variant="primary"
+                  variant="dark"
                   disabled={!newMessage.trim()}
                   onSubmit={handleSubmit}
                 >
@@ -109,7 +108,7 @@ const SingleThread = ({ threadId }) => {
                 </Button>
               </Form>
             </Card.Body>
-          </Card>
+          </div>
         </>
       )}
     </Container>

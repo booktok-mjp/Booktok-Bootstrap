@@ -8,8 +8,7 @@ import ThreadList from '../../components/thread/ThreadList';
 import LoadingSpinner from '../../components/spinner/LoadingSpinner';
 import ReactIconButton from '../../components/button/ReactIconButton';
 import ThreadForm from '../../components/form/ThreadForm';
-import Divider from '../../components/divider/Divider';
-import { Colors, Constants } from '../../config';
+import { Colors } from '../../config';
 
 import './DiscussionView.css';
 
