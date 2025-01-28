@@ -18,7 +18,7 @@ const useBookcase = () => {
       setLoading(false);
     } catch (error) {
       setLoading(false);
-      console.error('Error fetching bookcase:', error);
+      console.error('Error fetching bookcase:', error.message);
       setError(error);
     }
   }, [getAccessTokenSilently]);
