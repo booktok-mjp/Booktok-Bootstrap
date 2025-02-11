@@ -5,7 +5,7 @@ import './LoadingSpinner.css';
 
 const LoadingSpinner = () => {
   return (
-    <div className="spinner-container">
+    <div data-testid="loading-spinner" className="spinner-container">
       <Spinner animation="border" variant="secondary" />
     </div>
   );
