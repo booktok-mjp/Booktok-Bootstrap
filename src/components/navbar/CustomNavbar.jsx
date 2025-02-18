@@ -6,7 +6,6 @@ import Navbar from 'react-bootstrap/Navbar';
 import {
   BsChatTextFill,
   BsCollectionFill,
-  BsFillBookFill,
   BsFillHousesFill,
 } from 'react-icons/bs';
 
@@ -23,7 +22,7 @@ const CustomNavbar = () => {
   return (
     <Navbar
       expand="lg"
-      className="bg-body-tertiary mb-5 custom-navbar sticky-top d-flex align-items-center"
+      className="bg-bg-body-secondary mb-5 custom-navbar sticky-top d-flex align-items-center"
     >
       <Container fluid className="d-flex justify-content-between">
         <Navbar.Brand className="d-flex align-items-center" href="/">
@@ -45,16 +44,19 @@ const CustomNavbar = () => {
         <Navbar.Toggle />
 
         <Navbar.Offcanvas placement="end">
-          <Offcanvas.Header closeButton>
+          <Offcanvas.Header
+            style={{ backgroundColor: Colors.paynesGray }}
+            closeButton
+          >
             <Offcanvas.Title>
               <CustomHeader
                 size="lg"
                 text={Constants.name}
-                color={Colors.brunswickGreen}
+                color={Colors.ivory}
               />
             </Offcanvas.Title>
           </Offcanvas.Header>
-          <Offcanvas.Body>
+          <Offcanvas.Body style={{ backgroundColor: Colors.paynesGray }}>
             <Nav className="align-items-center">
               <Nav.Link
                 style={{ color: Colors.cream }}
