@@ -25,6 +25,8 @@ const MiniBookcase = ({ books, fetchBookcase }) => {
     }
   };
 
+  console.log('books', books);
+
   return (
     <Card className="minicase-card-container shadow-sm w-100">
       <Card.Img variant="top" src={bookImg} className="minicase-img" />
@@ -40,7 +42,7 @@ const MiniBookcase = ({ books, fetchBookcase }) => {
           />
         </div>
         <ListGroup as="ol" className="p-3">
-          {books.length === 0 ? (
+          {books.length === 0 || !books ? (
             <p>No books in the bookcase yet.</p>
           ) : (
             books.map((book) => (

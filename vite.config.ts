@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:8080',
+        target: 'https://booktok-api-6c7cd7103de8.herokuapp.com/',
         changeOrigin: true,
       },
     },
