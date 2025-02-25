@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useNavigate } from 'react-router-dom';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Card from 'react-bootstrap/Card';
 import { BiBookAdd } from 'react-icons/bi';
 import { FaBookReader } from 'react-icons/fa';
+import { BsFillTrashFill } from 'react-icons/bs';
 
 import ReactIconButton from '../button/ReactIconButton';
 import { Colors } from '../../config';
@@ -15,7 +16,6 @@ import {
 import BodyText from '../typography/BodyText';
 
 import './CustomCard.css';
-import { BsFillTrashFill } from 'react-icons/bs';
 
 const CustomCard = ({
   book,
@@ -27,7 +27,7 @@ const CustomCard = ({
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate(`/book/${book.id}`);
+    navigate(`/book/${book.id}`, { state: book });
   };
 
   const handleAddToBookcase = async (bookId) => {
@@ -38,6 +38,7 @@ const CustomCard = ({
       await fetchBookcase();
     } catch (error) {
       console.error('Error adding book', error);
+      r;
     }
   };
 
