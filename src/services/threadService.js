@@ -9,7 +9,7 @@ export const getAllThreads = async (token) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log('response', response.data);
+
     return response.data;
   } catch (error) {
     console.error(error);
@@ -24,7 +24,7 @@ export const getLoggedInUsersThreads = async (token) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log('response', response.data);
+
     return response.data;
   } catch (error) {
     console.error(error);
@@ -39,7 +39,7 @@ export const getThreadById = async ({ token, threadId }) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log('response', response.data);
+
     return response.data;
   } catch (error) {
     console.error(error);
@@ -54,7 +54,7 @@ export const addMessageToThread = async ({ token, message, threadId }) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log('response', response.data);
+
     return response.data;
   } catch (error) {
     console.error(error);
@@ -70,7 +70,7 @@ export const addNewThread = async ({ token, thread }) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log('response', response.data);
+
     return response.data;
   } catch (error) {
     console.error(error);
