@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Col, Container, Row, Card } from 'react-bootstrap';
 import { BiSolidMessageAdd, BiSolidMessageX } from 'react-icons/bi';
 
@@ -24,7 +24,11 @@ const DiscussionView = () => {
   return (
     <Container className="py-4">
       <Row className="mb-4">
-        <CustomHeader text="Booktok Threads" size="xlg" />
+        <CustomHeader
+          text="Booktok Threads"
+          color={Colors.brunswickGreen}
+          size="xlg"
+        />
       </Row>
       <Row>
         {/* My Threads Section */}

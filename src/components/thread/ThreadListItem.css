@@ -1,10 +1,10 @@
-/* .item-container {
+.item-container {
   transition: transform 0.3s ease;
 }
 
 .item-container:hover {
-  transform: scale(1.05);
-} */
+  transform: scale(1.02);
+}
 
 .list-item-link {
   color: var(--navy-blue);
