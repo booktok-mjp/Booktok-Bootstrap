@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
+
 import useAddThread from '../../hooks/useAddThread';
+import { Colors } from '../../config';
 
 const ThreadForm = ({ fetchThreads, setShowForm }) => {
   const [title, setTitle] = useState('');
@@ -31,27 +33,26 @@ const ThreadForm = ({ fetchThreads, setShowForm }) => {
   return (
     <Form className="mb-3">
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Form.Label>Title</Form.Label>
         <Form.Control
           onChange={(e) => setTitle(e.target.value)}
           type="text"
           value={title}
           required
           disabled={loading}
+          placeholder="subject"
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Form.Label>Book</Form.Label>
         <Form.Control
           onChange={(e) => setBook(e.target.value)}
           type="text"
           value={book}
           required
           disabled={loading}
+          placeholder="book"
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-        <Form.Label>Content</Form.Label>
         <Form.Control
           as="textarea"
           rows={3}
@@ -59,10 +60,16 @@ const ThreadForm = ({ fetchThreads, setShowForm }) => {
           value={content}
           required
           disabled={loading}
+          placeholder="..."
         />
       </Form.Group>
       <div className="d-grid gap-2">
-        <Button variant="secondary" size="md" onClick={handleAddThread}>
+        <Button
+          variant="outline-secondary"
+          style={{ backgroundColor: Colors.wineRed, color: Colors.ivory }}
+          size="md"
+          onClick={handleAddThread}
+        >
           Create New Thread
         </Button>
       </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row, Card } from 'react-bootstrap';
 import { BiSolidMessageAdd, BiSolidMessageX } from 'react-icons/bi';
 
 import CustomHeader from '../../components/header/CustomHeader';
@@ -12,8 +12,9 @@ import { Colors } from '../../config';
 
 import './DiscussionView.css';
 
+// TODO: separate components
 const DiscussionView = () => {
-  const { allThreads, myThreads, error, fetchThreads, loading } = useThreads();
+  const { allThreads, myThreads, fetchThreads, loading } = useThreads();
   const [showForm, setShowForm] = useState(false);
 
   if (loading) {
@@ -21,45 +22,58 @@ const DiscussionView = () => {
   }
 
   return (
-    <Container>
-      <Row className="mb-3">
-        <CustomHeader text="Chat with Booktok!" size="xlg" />
+    <Container className="py-4">
+      <Row className="mb-4">
+        <CustomHeader text="Booktok Threads" size="xlg" />
       </Row>
-      <Row className="justify-content-around">
-        {/* my threads */}
-        <Col className="thread-container-discussion h-50" lg={5}>
-          <div className="d-flex justify-content-between mb-3">
-            <CustomHeader
-              color={Colors.darkSlate}
-              text="My Threads"
-              size="md"
-            />
-            {showForm ? (
-              <ReactIconButton
-                onClick={() => setShowForm(false)}
-                icon={<BiSolidMessageX />}
-                tooltipText="Cancel"
+      <Row>
+        {/* My Threads Section */}
+        <Col lg={5} className="mb-4">
+          <Card className="shadow-sm" style={{ backgroundColor: Colors.cream }}>
+            <Card.Header className="d-flex justify-content-between align-items-center">
+              <CustomHeader
+                color={Colors.darkSlate}
+                text="My Threads"
+                size="md"
               />
-            ) : (
-              <ReactIconButton
-                icon={<BiSolidMessageAdd />}
-                onClick={() => setShowForm(!showForm)}
-                tooltipText="Add new thread"
-              />
-            )}
-          </div>
-          {showForm && (
-            <ThreadForm fetchThreads={fetchThreads} setShowForm={setShowForm} />
-          )}
-          <ThreadList threads={myThreads} />
+              {showForm ? (
+                <ReactIconButton
+                  onClick={() => setShowForm(false)}
+                  icon={<BiSolidMessageX size={24} />}
+                  tooltipText="Cancel"
+                />
+              ) : (
+                <ReactIconButton
+                  icon={<BiSolidMessageAdd size={24} />}
+                  onClick={() => setShowForm(true)}
+                  tooltipText="Add new thread"
+                />
+              )}
+            </Card.Header>
+            <Card.Body>
+              {showForm && (
+                <div className="mb-3">
+                  <ThreadForm
+                    fetchThreads={fetchThreads}
+                    setShowForm={setShowForm}
+                  />
+                </div>
+              )}
+              <ThreadList threads={myThreads} />
+            </Card.Body>
+          </Card>
         </Col>
 
-        {/* all threads */}
-        <Col className="thread-container-discussion h-50" lg={6}>
-          <div className="mb-3">
-            <CustomHeader color={Colors.wineRed} text="Discover" size="md" />{' '}
-          </div>
-          <ThreadList threads={allThreads} />
+        {/* Discover Section */}
+        <Col lg={7} className="mb-4">
+          <Card className="shadow-sm" style={{ backgroundColor: Colors.cream }}>
+            <Card.Header>
+              <CustomHeader color={Colors.wineRed} text="Discover" size="md" />
+            </Card.Header>
+            <Card.Body>
+              <ThreadList threads={allThreads} />
+            </Card.Body>
+          </Card>
         </Col>
       </Row>
     </Container>

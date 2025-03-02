@@ -1,9 +1,9 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import { Route, Routes } from 'react-router-dom';
 
+import CustomNavbar from './components/navbar/CustomNavbar';
 import LandingView from './views/landing/LandingView';
 import HomeView from './views/home/HomeView';
-import CustomNavbar from './components/navbar/CustomNavbar';
 import BookcaseView from './views/bookcase/BookcaseView';
 import BookDetailView from './views/bookdetail/BookDetailView';
 import DiscussionView from './views/discussion/DiscussionView';

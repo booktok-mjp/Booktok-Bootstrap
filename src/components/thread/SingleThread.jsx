@@ -1,19 +1,21 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
 import { Button, Container, Form, ListGroup, Card } from 'react-bootstrap';
+import { SlSpeech } from 'react-icons/sl';
 
 import useThreadById from '../../hooks/useThreadById';
 import CustomHeader from '../header/CustomHeader';
 import LoadingSpinner from '../spinner/LoadingSpinner';
+import BodyText from '../typography/BodyText';
+import useThreads from '../../hooks/useThreads';
+import { addMessageToThread } from '../../services/threadService';
 
 import './SingleThread.css';
-import { Colors } from '../../config';
-import BodyText from '../typography/BodyText';
-import { addMessageToThread } from '../../services/threadService';
-import { useAuth0 } from '@auth0/auth0-react';
-import useThreads from '../../hooks/useThreads';
 
+// TODO: change api to include username with each message in threads
+// TODO: create separate components for details, messages and form
 const SingleThread = ({ threadId }) => {
-  const { thread, loading, error } = useThreadById(threadId);
+  const { thread, loading } = useThreadById(threadId);
   const { fetchThreads } = useThreads();
   const [newMessage, setNewMessage] = useState('');
   const { getAccessTokenSilently } = useAuth0();
@@ -39,57 +41,54 @@ const SingleThread = ({ threadId }) => {
     return <LoadingSpinner />;
   }
 
-  // ! separate components
   return (
     <Container className="single-thread-container p-4">
       {thread && (
         <>
           {/* Thread Details */}
-          <div
-            className="thread-details-container mb-4 shadow-sm"
-            bg={Colors.cream}
-          >
-            <div>
-              <p className="source-sans-3-bold fs-3"> {thread.title}</p>
-              <p className="thread-book mt-2">
+          <Card className="mb-4 shadow-sm flex-col">
+            <Card.Header className="justify-center">
+              <SlSpeech size={50} style={{ marginRight: 10 }} />
+              <CustomHeader text={thread.title} size="lg" />
+            </Card.Header>
+            <Card.Body>
+              <p className="mb-2">
                 <strong>Book:</strong> {thread.book}
               </p>
-              <p className="thread-subject mt-2">{thread.subject}</p>
-            </div>
-          </div>
+              <p className="mb-0">{thread.subject}</p>
+            </Card.Body>
+          </Card>
 
           {/* Messages */}
-          <div className="message-list-container mb-4 shadow-sm">
-            <ListGroup className="message-list">
+          <Card className="mb-4 shadow-sm">
+            <Card.Header className="bg-light">
+              <CustomHeader text="Messages" size="md" />
+            </Card.Header>
+            <ListGroup variant="flush">
               {thread.messages.length > 0 ? (
                 thread.messages.map((message) => (
-                  <ListGroup.Item
-                    key={message.id}
-                    className="message-item py-2 d-flex justify-content-start align-items-start"
-                    variant="light"
-                  >
-                    <div>
-                      <p className="message-author mb-1">
-                        <strong>User:</strong> {message.user_id}
-                      </p>
-                      <p className="message-content">{message.content}</p>
-                    </div>
+                  <ListGroup.Item key={message.id} className="py-3 ">
+                    <span className="mb-1">
+                      <strong>@user: </strong> {message.user_id}
+                    </span>
+                    <span className="mb-0">{message.content}</span>
                   </ListGroup.Item>
                 ))
               ) : (
-                <BodyText text="No Messages..." />
+                <ListGroup.Item>
+                  <BodyText text="No Messages..." />
+                </ListGroup.Item>
               )}
             </ListGroup>
-          </div>
+          </Card>
 
-          {/* Add Message */}
-          <div className="add-message-container shadow-sm">
+          <Card className="shadow-sm">
+            <Card.Header className="bg-light">
+              <CustomHeader text="Send a Message" size="md" />
+            </Card.Header>
             <Card.Body>
               <Form onSubmit={handleSubmit}>
                 <Form.Group controlId="newMessage" className="mb-3">
-                  <Form.Label>
-                    <CustomHeader text="Send a Message" size="md" />
-                  </Form.Label>
                   <Form.Control
                     as="textarea"
                     rows={3}
@@ -98,17 +97,18 @@ const SingleThread = ({ threadId }) => {
                     onChange={(e) => setNewMessage(e.target.value)}
                   />
                 </Form.Group>
-                <Button
-                  type="submit"
-                  variant="dark"
-                  disabled={!newMessage.trim()}
-                  onSubmit={handleSubmit}
-                >
-                  Send
-                </Button>
+                <div className="">
+                  <Button
+                    type="submit"
+                    variant="dark"
+                    disabled={!newMessage.trim()}
+                  >
+                    Send
+                  </Button>
+                </div>
               </Form>
             </Card.Body>
-          </div>
+          </Card>
         </>
       )}
     </Container>
