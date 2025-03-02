@@ -1,10 +1,9 @@
-import React from 'react';
-
-import './LandingHeader.css';
 import { Constants } from '../../config';
 
+import './LandingHeader.css';
+
 const LandingHeader = () => {
-  return <div className="pacifico-regular-header">{Constants.welcome}</div>;
+  return <h1 className="landing-header">{Constants.welcome}</h1>;
 };
 
 export default LandingHeader;
