@@ -9,7 +9,7 @@ export const getAllBooks = async (token) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log('response', response.data);
+
     return response.data;
   } catch (error) {
     console.error(error);
@@ -24,7 +24,7 @@ export const getOneBook = async ({ token, bookId }) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log('response', response.data);
+
     return response.data;
   } catch (error) {
     console.error(error);

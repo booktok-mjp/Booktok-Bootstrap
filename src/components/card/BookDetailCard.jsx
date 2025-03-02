@@ -26,7 +26,7 @@ const BookDetailCard = ({ currentBook, isBookcaseView }) => {
     }
   };
   return (
-    <div className="book-detail-container">
+    <div data-testid="book-detail-container" className="book-detail-container">
       <div className="book-detail-card">
         <div className="book-detail-header">
           <img

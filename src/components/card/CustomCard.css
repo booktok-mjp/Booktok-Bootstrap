@@ -1,10 +1,12 @@
 .custom-card {
   height: 100%;
   max-width: 20rem;
+  max-height: 460px;
   display: flex;
   flex-direction: column;
   margin-bottom: 8px;
   transition: transform 0.3s ease;
+  border-radius: 30px;
 }
 
 .custom-card:hover {

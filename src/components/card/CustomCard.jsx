@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useNavigate } from 'react-router-dom';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Card from 'react-bootstrap/Card';
 import { BiBookAdd } from 'react-icons/bi';
 import { FaBookReader } from 'react-icons/fa';
+import { BsFillTrashFill } from 'react-icons/bs';
 
 import ReactIconButton from '../button/ReactIconButton';
 import { Colors } from '../../config';
@@ -15,19 +15,20 @@ import {
 import BodyText from '../typography/BodyText';
 
 import './CustomCard.css';
-import { BsFillTrashFill } from 'react-icons/bs';
 
 const CustomCard = ({
   book,
   showAddBtn = true,
   fetchBookcase,
   isBookcaseView,
+  setReadingNow,
+  isBeingRead,
 }) => {
   const { getAccessTokenSilently } = useAuth0();
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate(`/book/${book.id}`);
+    navigate(`/book/${book.id}`, { state: book });
   };
 
   const handleAddToBookcase = async (bookId) => {
@@ -51,61 +52,60 @@ const CustomCard = ({
     }
   };
 
-  const handleSetReadingNow = (bookId) => {
-    console.log('set to reading now', bookId);
-  };
-
   return (
-    <Card bg="light" className="mb-5 custom-card shadow-sm">
-      <div className="custom-card-img-container">
-        <Card.Img
-          variant="top"
-          src={book.imgUrl}
-          onClick={handleNavigate}
-          className="custom-card-img"
-        />
-      </div>
-      <Card.Body
-        className="d-flex flex-column"
-        style={{ backgroundColor: Colors.ivory }}
-      >
-        <Card.Title>{book.title}</Card.Title>
-        <BodyText
-          text={`${book.description.substring(0, 70)}...`}
-          className="flex-grow-1"
-        />
-      </Card.Body>
-      <ListGroup className="list-group-flush bg-body-tertiary">
-        <ListGroup.Item>{book.author_name}</ListGroup.Item>
-      </ListGroup>
-      <Card.Body
-        className="text-center align-items-end"
-        style={{ backgroundColor: Colors.ivory }}
-      >
-        <div className="d-flex justify-content-between w-100">
-          {showAddBtn ? (
-            <ReactIconButton
-              icon={<BiBookAdd />}
-              onClick={() => handleAddToBookcase(book.id)}
-              tooltipText="Add to Bookcase"
-            />
-          ) : (
-            <ReactIconButton
-              icon={<FaBookReader />}
-              onClick={() => handleSetReadingNow(book.id)}
-              tooltipText="Set to Reading Now"
-            />
-          )}
-          {isBookcaseView && (
-            <ReactIconButton
-              icon={<BsFillTrashFill />}
-              onClick={() => handleRemoveBook(book.id)}
-              tooltipText="Delete from Bookcase"
-            />
-          )}
+    <>
+      <Card bg="light" className="mb-5 custom-card shadow-sm">
+        <div className="custom-card-img-container">
+          <Card.Img
+            variant="top"
+            src={book.imgUrl}
+            onClick={handleNavigate}
+            className="custom-card-img"
+          />
         </div>
-      </Card.Body>
-    </Card>
+        <Card.Body
+          className="d-flex flex-column"
+          style={{ backgroundColor: Colors.ivory }}
+        >
+          <Card.Title>{book.title}</Card.Title>
+          <BodyText
+            text={`${book.description.substring(0, 70)}...`}
+            className="flex-grow-1"
+          />
+        </Card.Body>
+        <ListGroup className="list-group-flush bg-body-tertiary">
+          <ListGroup.Item>{book.author_name}</ListGroup.Item>
+        </ListGroup>
+        <Card.Body
+          className="text-center align-items-end"
+          style={{ backgroundColor: Colors.ivory }}
+        >
+          <div className="d-flex justify-content-between w-100">
+            {showAddBtn && (
+              <ReactIconButton
+                icon={<BiBookAdd />}
+                onClick={() => handleAddToBookcase(book.id)}
+                tooltipText="Add to Bookcase"
+              />
+            )}
+            {!isBeingRead && !showAddBtn && (
+              <ReactIconButton
+                icon={<FaBookReader />}
+                onClick={() => setReadingNow(book)}
+                tooltipText="Set to Reading Now"
+              />
+            )}
+            {isBookcaseView && (
+              <ReactIconButton
+                icon={<BsFillTrashFill />}
+                onClick={() => handleRemoveBook(book.id)}
+                tooltipText="Delete from Bookcase"
+              />
+            )}
+          </div>
+        </Card.Body>
+      </Card>
+    </>
   );
 };
 

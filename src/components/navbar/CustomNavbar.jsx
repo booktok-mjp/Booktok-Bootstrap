@@ -43,11 +43,11 @@ const CustomNavbar = () => {
 
         <Navbar.Toggle />
 
-        <Navbar.Offcanvas placement="end">
-          <Offcanvas.Header
-            style={{ backgroundColor: Colors.paynesGray }}
-            closeButton
-          >
+        <Navbar.Offcanvas
+          style={{ backgroundColor: Colors.paynesGray }}
+          placement="end"
+        >
+          <Offcanvas.Header closeButton>
             <Offcanvas.Title>
               <CustomHeader
                 size="lg"
@@ -56,7 +56,7 @@ const CustomNavbar = () => {
               />
             </Offcanvas.Title>
           </Offcanvas.Header>
-          <Offcanvas.Body style={{ backgroundColor: Colors.paynesGray }}>
+          <Offcanvas.Body>
             <Nav className="align-items-center">
               <Nav.Link
                 style={{ color: Colors.cream }}

@@ -1,9 +1,9 @@
-import React from 'react';
 import ListGroupItem from 'react-bootstrap/ListGroupItem';
 import { Link } from 'react-router-dom';
 import Badge from 'react-bootstrap/Badge';
 
 import BodyText from '../typography/BodyText';
+import { Colors } from '../../config';
 
 import './ThreadListItem.css';
 
@@ -12,7 +12,7 @@ const ThreadListItem = ({ thread }) => {
     <ListGroupItem
       as="li"
       className="d-flex justify-content-between align-items-start mb-2 item-container"
-      variant="light"
+      style={{ backgroundColor: Colors.ivory }}
       action={true}
     >
       <div className="ms-2 me-auto">
