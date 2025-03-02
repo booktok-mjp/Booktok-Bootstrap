@@ -11,6 +11,7 @@ import useThreads from '../../hooks/useThreads';
 import { addMessageToThread } from '../../services/threadService';
 
 import './SingleThread.css';
+import { Colors } from '../../config';
 
 // TODO: change api to include username with each message in threads
 // TODO: create separate components for details, messages and form
@@ -47,9 +48,13 @@ const SingleThread = ({ threadId }) => {
         <>
           {/* Thread Details */}
           <Card className="mb-4 shadow-sm flex-col">
-            <Card.Header className="justify-center">
-              <SlSpeech size={50} style={{ marginRight: 10 }} />
-              <CustomHeader text={thread.title} size="lg" />
+            <Card.Header className="d-flex">
+              <SlSpeech size={40} style={{ marginRight: 10 }} />
+              <CustomHeader
+                color={Colors.brunswickGreen}
+                text={thread.title}
+                size="lg"
+              />
             </Card.Header>
             <Card.Body>
               <p className="mb-2">
@@ -62,7 +67,11 @@ const SingleThread = ({ threadId }) => {
           {/* Messages */}
           <Card className="mb-4 shadow-sm">
             <Card.Header className="bg-light">
-              <CustomHeader text="Messages" size="md" />
+              <CustomHeader
+                color={Colors.brunswickGreen}
+                text="Messages"
+                size="md"
+              />
             </Card.Header>
             <ListGroup variant="flush">
               {thread.messages.length > 0 ? (
@@ -84,7 +93,11 @@ const SingleThread = ({ threadId }) => {
 
           <Card className="shadow-sm">
             <Card.Header className="bg-light">
-              <CustomHeader text="Send a Message" size="md" />
+              <CustomHeader
+                color={Colors.brunswickGreen}
+                text="Send a Message"
+                size="md"
+              />
             </Card.Header>
             <Card.Body>
               <Form onSubmit={handleSubmit}>
