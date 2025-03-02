@@ -1,8 +1,6 @@
 .custom-header {
-  text-align: center;
+  text-align: left;
   border-radius: 5px;
-  font-family: 'Arial', sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .custom-header.sm {

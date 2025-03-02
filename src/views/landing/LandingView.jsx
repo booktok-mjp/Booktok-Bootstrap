@@ -8,10 +8,12 @@ import './LandingView.css';
 const LandingView = () => {
   return (
     <div className="landing-page">
-      <LandingHeader />
-      <LandingEnterButton />
-      <div className="mt-4">
-        <CustomHeader text={Constants.tagline2} />
+      <div className="overlay">
+        <div className="content">
+          <LandingHeader />
+          <CustomHeader text={Constants.tagline2} size="lg" />
+          <LandingEnterButton />
+        </div>
       </div>
     </div>
   );

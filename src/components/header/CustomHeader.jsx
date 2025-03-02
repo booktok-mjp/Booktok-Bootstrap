@@ -1,14 +1,10 @@
-import React from 'react';
 import './CustomHeader.css';
 
-const CustomHeader = ({ text, size = 'md', color = 'var(--navy-blue)' }) => {
+const CustomHeader = ({ text, size = 'md', color = '#fff' }) => {
   return (
-    <span
-      className={`custom-header ${size} pacifico-regular`}
-      style={{ color }}
-    >
+    <h2 className={`custom-header ${size}`} style={{ color }}>
       {text}
-    </span>
+    </h2>
   );
 };
 
