@@ -48,6 +48,7 @@ const SingleThread = ({ threadId }) => {
                 text={thread.title}
                 size="lg"
                 color={Colors.wineRed}
+                alignLeft
               />
             </div>
             <p className="thread-subtitle mb-1">
