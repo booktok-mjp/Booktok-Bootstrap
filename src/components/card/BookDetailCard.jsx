@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useAuth0 } from '@auth0/auth0-react';
 
@@ -15,8 +15,7 @@ const BookDetailCard = ({ currentBook, isBookcaseView }) => {
   const handleAddToBookcase = async (bookId) => {
     try {
       const token = await getAccessTokenSilently();
-      const response = await addBookToBookcase({ token, bookId });
-      console.log('response', response);
+      await addBookToBookcase({ token, bookId });
       setShowAlert(true);
       await fetchBookcase();
     } catch (error) {

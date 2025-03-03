@@ -13,12 +13,9 @@ const useAddThread = () => {
     setLoading(true);
     setError(null);
 
-    console.log('thread in hook', thread);
-
     try {
       const token = await getAccessTokenSilently();
       const response = await addNewThread({ token, thread });
-      console.log('response in hook:', response);
       setNewThread(response);
       return response;
     } catch (err) {

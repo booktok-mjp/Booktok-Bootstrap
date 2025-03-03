@@ -24,7 +24,6 @@ export const getUserBookcaseById = async ({ token, userId }) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log('response', response);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -39,7 +38,6 @@ export const deletedBookFromBookcase = async ({ token, bookId }) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log('response', response);
     return response;
   } catch (error) {
     console.error('error deleting book from bookcase', error);
@@ -58,7 +56,6 @@ export const addBookToBookcase = async ({ token, bookId }) => {
         },
       }
     );
-    console.log('response', response);
     return response.data;
   } catch (error) {
     console.error('error adding book to bookcase', error);

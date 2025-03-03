@@ -28,6 +28,7 @@ const DiscussionView = () => {
           text="Booktok Threads"
           color={Colors.brunswickGreen}
           size="xlg"
+          isPacifico
         />
       </Row>
       <Row>
@@ -72,7 +73,11 @@ const DiscussionView = () => {
         <Col lg={7} className="mb-4">
           <Card className="shadow-sm" style={{ backgroundColor: Colors.cream }}>
             <Card.Header>
-              <CustomHeader color={Colors.wineRed} text="Discover" size="md" />
+              <CustomHeader
+                color={Colors.wineRed}
+                text="Latest Topics"
+                size="md"
+              />
             </Card.Header>
             <Card.Body>
               <ThreadList threads={allThreads} />

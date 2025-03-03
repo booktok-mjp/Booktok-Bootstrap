@@ -7,7 +7,7 @@ import { BsFillTrashFill } from 'react-icons/bs';
 import CustomHeader from '../../header/CustomHeader';
 import ReactIconButton from '../../button/ReactIconButton';
 import bookImg from '../../../assets/images/books.png';
-import { Colors, Constants } from '../../../config';
+import { Colors } from '../../../config';
 import { deletedBookFromBookcase } from '../../../services/bookcaseService';
 
 import './MiniBookcase.css';
@@ -25,7 +25,10 @@ const MiniBookcase = ({ books, fetchBookcase }) => {
     }
   };
 
-  console.log('books', books);
+  const latestBooks =
+    books && books.length > 0
+      ? [...books].sort((a, b) => b.id - a.id).slice(0, 3)
+      : [];
 
   return (
     <Card className="minicase-card-container shadow-sm w-100">
@@ -36,7 +39,7 @@ const MiniBookcase = ({ books, fetchBookcase }) => {
             <GiBookshelf fontSize="30pt" color={Colors.brunswickGreen} />
           </span>
           <CustomHeader
-            text={Constants.myMinicase}
+            text="Your Latest Reads"
             size="lg"
             color={Colors.brunswickGreen}
           />
@@ -45,7 +48,7 @@ const MiniBookcase = ({ books, fetchBookcase }) => {
           {books.length === 0 || !books ? (
             <p>No books in the bookcase yet.</p>
           ) : (
-            books.map((book) => (
+            latestBooks.map((book) => (
               <ListGroup.Item
                 as="li"
                 className="d-flex justify-content-between align-items-center mb-2 minicase-book"

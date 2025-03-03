@@ -35,7 +35,6 @@ const CustomCard = ({
     try {
       const token = await getAccessTokenSilently();
       const response = await addBookToBookcase({ token, bookId });
-      console.log('response', response);
       await fetchBookcase();
     } catch (error) {
       console.error('Error adding book', error);

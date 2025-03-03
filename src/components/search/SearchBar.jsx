@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { GiArchiveResearch } from 'react-icons/gi';
 import { SlMagnifierRemove } from 'react-icons/sl';
+import { Badge, OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 import { Colors } from '../../config';
+
 import './SearchBar.css';
-import { Badge, OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 const SearchBar = ({ placeholder, onSearch, allBooks }) => {
   const [searchTerm, setSearchTerm] = useState('');

@@ -10,7 +10,7 @@ const useThreadById = (threadId) => {
 
   const { getAccessTokenSilently } = useAuth0();
 
-  const fetchThreadById = useCallback(async () => {
+  const refetchThread = useCallback(async () => {
     try {
       setLoading(true);
       const token = await getAccessTokenSilently();
@@ -22,13 +22,13 @@ const useThreadById = (threadId) => {
       console.error('Error fetching thread:', error);
       setError(error);
     }
-  }, [getAccessTokenSilently]);
+  }, [threadId, getAccessTokenSilently]);
 
   useEffect(() => {
-    fetchThreadById();
-  }, [fetchThreadById]);
+    refetchThread();
+  }, [refetchThread]);
 
-  return { thread, loading, error };
+  return { thread, loading, error, refetchThread };
 };
 
 export default useThreadById;

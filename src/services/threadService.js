@@ -63,7 +63,6 @@ export const addMessageToThread = async ({ token, message, threadId }) => {
 };
 
 export const addNewThread = async ({ token, thread }) => {
-  console.log('thread in service: ', thread);
   try {
     const response = await axios.post(`${PATH}`, thread, {
       headers: {

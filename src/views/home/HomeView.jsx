@@ -13,6 +13,8 @@ import colors from '../../config/colors';
 import CustomAlert from '../../components/alert/CustomAlert';
 import { getLoggedInUsersBookcase } from '../../services/bookcaseService';
 import LoadingSpinner from '../../components/spinner/LoadingSpinner';
+import CustomHeader from '../../components/header/CustomHeader';
+import { Colors } from '../../config';
 
 const HomeView = () => {
   const { getAccessTokenSilently } = useAuth0();
@@ -21,6 +23,7 @@ const HomeView = () => {
   const [bookcaseBooks, setBookcaseBooks] = useState([]);
   const [showAlert, setShowAlert] = useState(false);
   const [alert, setAlert] = useState({ body: '', heading: '', variant: '' });
+  const { user } = useAuth0();
 
   const fetchBookcase = useCallback(async () => {
     try {
@@ -62,6 +65,15 @@ const HomeView = () => {
 
   return (
     <Container>
+      <Row className="mb-4">
+        <CustomHeader
+          text={
+            user.nickname ? `Welcome back, ${user.nickname}!` : 'Welcome home!'
+          }
+          isPacifico
+          size="xlg"
+        />
+      </Row>
       <Row>
         <Col>
           <SearchBar
@@ -71,7 +83,11 @@ const HomeView = () => {
           />
         </Col>
       </Row>
-      <Divider color={colors.navyBlue} thickness="1px" marginBottom="40px" />
+      <Divider
+        color={colors.battleshipGray}
+        thickness="1px"
+        marginBottom="40px"
+      />
       <Row className="justify-content-center">
         <Col
           lg={4}
@@ -86,6 +102,11 @@ const HomeView = () => {
           <RecommendationCard />
         </Col>
         <Col lg={8} xs={12}>
+          <CustomHeader
+            text="Library"
+            color={Colors.brunswickGreen}
+            size="xlg"
+          />
           <CustomGrid items={customBookCards} />
         </Col>
       </Row>

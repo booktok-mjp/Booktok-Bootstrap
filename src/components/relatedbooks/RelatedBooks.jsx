@@ -1,10 +1,9 @@
-import React from 'react';
 import { useParams } from 'react-router-dom';
 
 import useAllBooks from '../../hooks/book/useAllBooks';
 import CustomCard from '../card/CustomCard';
 import CustomHeader from '../header/CustomHeader';
-import { Constants } from '../../config';
+import { Colors, Constants } from '../../config';
 
 const RelatedBooks = () => {
   const { allBooks: books } = useAllBooks();
@@ -12,7 +11,13 @@ const RelatedBooks = () => {
 
   return (
     <div className="w-75 m-auto mt-5">
-      <CustomHeader text={Constants.relatedBooks} size="lg" />
+      <CustomHeader
+        text={Constants.relatedBooks}
+        size="xlg"
+        color={Colors.battleshipGray}
+        isPacifico
+        alignLeft
+      />
       <div className="d-flex justify-content-around flex-wrap mt-5">
         {books
           .filter((book) => book.id !== bookId)

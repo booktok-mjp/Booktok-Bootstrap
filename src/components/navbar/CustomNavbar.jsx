@@ -1,4 +1,3 @@
-import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Container, Nav, Offcanvas } from 'react-bootstrap';
 import { IoLogOut } from 'react-icons/io5';
@@ -37,6 +36,7 @@ const CustomNavbar = () => {
               size="lg"
               text={Constants.name}
               color={Colors.ivory}
+              isPacifico={true}
             />
           </div>
         </Navbar.Brand>
