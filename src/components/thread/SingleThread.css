@@ -1,39 +1,64 @@
 .single-thread-container {
-  background-color: var(--paynes-gray);
-  border-radius: 8px;
-}
-
-.thread-details-container {
+  max-width: 900px;
   background-color: var(--cream);
   border-radius: 8px;
-  padding: 20px;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  margin: 10px;
 }
 
-.message-list-container {
-  background-color: var(--beaver);
-  border-radius: 8px;
+.thread-header {
+  border-bottom: 1px solid #ccc;
 }
 
-.message-item {
-  border: none;
-  background-color: var(--bone);
+.thread-subtitle {
+  font-size: 16pt;
+  color: #555;
+  text-align: end;
+}
+
+.messages-feed {
+  max-height: 60vh;
+  overflow-y: auto;
+  border-bottom: 1px solid #ccc;
+}
+
+.message-bubble {
+  background-color: #cccccc5a;
   border-radius: 6px;
-  margin-bottom: 8px;
-  transition: transform 0.2s ease;
+  padding: 10px;
+  transition: transform 0.3s ease;
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  align-items: start;
 }
 
-.message-item:hover {
+.message-bubble:hover {
   transform: scale(1.02);
 }
 
-.add-message-container {
-  background-color: var(--ivory);
-  border-radius: 8px;
-  padding: 20px;
+.message-author {
+  font-weight: 600;
+  margin-bottom: 2px;
+  color: #333;
 }
 
-.message-list {
-  overflow-y: auto;
-  max-height: 40vh;
-  background-color: var(--beaver);
+.message-content {
+  font-size: 0.95rem;
+}
+
+.send-message-area {
+  background-color: var(--cream);
+  border-top: 1px solid #ccc;
+  border-radius: 0 0 8px 8px;
+}
+
+.header-container {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+}
+
+.icon-title {
+  align-items: center;
+  display: flex;
 }

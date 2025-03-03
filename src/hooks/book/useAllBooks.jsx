@@ -16,7 +16,6 @@ const useAllBooks = () => {
         setLoading(true);
         const token = await getAccessTokenSilently();
         const books = await getAllBooks(token);
-        console.log('hook', books);
         setAllBooks(books);
         setLoading(false);
       } catch (error) {

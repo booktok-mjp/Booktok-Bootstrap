@@ -8,3 +8,7 @@
   height: fit-content;
   z-index: 100;
 }
+
+.reading-now-container {
+  align-items: flex-start;
+}

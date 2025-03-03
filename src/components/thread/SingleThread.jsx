@@ -1,23 +1,19 @@
 import { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-import { Button, Container, Form, ListGroup, Card } from 'react-bootstrap';
+import { Button, Container, Form, Row, Col } from 'react-bootstrap';
 import { SlSpeech } from 'react-icons/sl';
 
 import useThreadById from '../../hooks/useThreadById';
 import CustomHeader from '../header/CustomHeader';
 import LoadingSpinner from '../spinner/LoadingSpinner';
 import BodyText from '../typography/BodyText';
-import useThreads from '../../hooks/useThreads';
 import { addMessageToThread } from '../../services/threadService';
-
-import './SingleThread.css';
 import { Colors } from '../../config';
 
-// TODO: change api to include username with each message in threads
-// TODO: create separate components for details, messages and form
+import './SingleThread.css';
+
 const SingleThread = ({ threadId }) => {
-  const { thread, loading } = useThreadById(threadId);
-  const { fetchThreads } = useThreads();
+  const { thread, loading, refetchThread } = useThreadById(threadId);
   const [newMessage, setNewMessage] = useState('');
   const { getAccessTokenSilently } = useAuth0();
 
@@ -25,105 +21,92 @@ const SingleThread = ({ threadId }) => {
     e.preventDefault();
     try {
       const token = await getAccessTokenSilently();
-      const response = await addMessageToThread({
+      await addMessageToThread({
         token,
         message: { content: newMessage },
         threadId,
       });
-      await fetchThreads();
-      console.log('response', response);
+      await refetchThread();
     } catch (error) {
       console.error('error', error);
     }
     setNewMessage('');
   };
 
-  if (loading) {
+  if (loading || !thread) {
     return <LoadingSpinner />;
   }
 
   return (
-    <Container className="single-thread-container p-4">
-      {thread && (
-        <>
-          {/* Thread Details */}
-          <Card className="mb-4 shadow-sm flex-col">
-            <Card.Header className="d-flex">
-              <SlSpeech size={40} style={{ marginRight: 10 }} />
+    <Container fluid className="single-thread-container my-4">
+      <Row className="thread-header p-3 mb-3">
+        <Col>
+          <div className="header-container mb-2">
+            <div className="icon-title">
+              <SlSpeech size={30} className="me-2" color={Colors.wineRed} />
               <CustomHeader
-                color={Colors.brunswickGreen}
                 text={thread.title}
                 size="lg"
+                color={Colors.wineRed}
               />
-            </Card.Header>
-            <Card.Body>
-              <p className="mb-2">
-                <strong>Book:</strong> {thread.book}
-              </p>
-              <p className="mb-0">{thread.subject}</p>
-            </Card.Body>
-          </Card>
+            </div>
+            <p className="thread-subtitle mb-1">
+              <strong>Book:</strong> {thread.book}
+            </p>
+          </div>
+          {thread.subject && (
+            <div className="message-bubble mb-3">
+              <span className="mb-0">{thread.subject}</span>
+              <span className="text-muted w-fit">10 mins ago</span>
+            </div>
+          )}
+        </Col>
+      </Row>
 
-          {/* Messages */}
-          <Card className="mb-4 shadow-sm">
-            <Card.Header className="bg-light">
-              <CustomHeader
-                color={Colors.brunswickGreen}
-                text="Messages"
-                size="md"
-              />
-            </Card.Header>
-            <ListGroup variant="flush">
-              {thread.messages.length > 0 ? (
-                thread.messages.map((message) => (
-                  <ListGroup.Item key={message.id} className="py-3 ">
-                    <span className="mb-1">
-                      <strong>@user: </strong> {message.user_id}
-                    </span>
-                    <span className="mb-0">{message.content}</span>
-                  </ListGroup.Item>
-                ))
-              ) : (
-                <ListGroup.Item>
-                  <BodyText text="No Messages..." />
-                </ListGroup.Item>
-              )}
-            </ListGroup>
-          </Card>
-
-          <Card className="shadow-sm">
-            <Card.Header className="bg-light">
-              <CustomHeader
-                color={Colors.brunswickGreen}
-                text="Send a Message"
-                size="md"
-              />
-            </Card.Header>
-            <Card.Body>
-              <Form onSubmit={handleSubmit}>
-                <Form.Group controlId="newMessage" className="mb-3">
-                  <Form.Control
-                    as="textarea"
-                    rows={3}
-                    placeholder="Write your message here..."
-                    value={newMessage}
-                    onChange={(e) => setNewMessage(e.target.value)}
-                  />
-                </Form.Group>
-                <div className="">
-                  <Button
-                    type="submit"
-                    variant="dark"
-                    disabled={!newMessage.trim()}
-                  >
-                    Send
-                  </Button>
+      <Row className="messages-feed p-3 mb-3">
+        <Col>
+          {thread.messages.length > 0 ? (
+            thread.messages.map((message) => (
+              <div key={message.id} className="message-bubble mb-3">
+                <div>
+                  <span className="message-author">@user: </span>
+                  <span className="message-content">{message.content}</span>
                 </div>
-              </Form>
-            </Card.Body>
-          </Card>
-        </>
-      )}
+                <BodyText text="10 mins ago" />
+              </div>
+            ))
+          ) : (
+            <BodyText text="No Messages..." />
+          )}
+        </Col>
+      </Row>
+
+      <Row className="p-3 send-message-area">
+        <Col>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="newMessage" className="mb-3">
+              <Form.Control
+                style={{ backgroundColor: Colors.ivory }}
+                as="textarea"
+                rows={5}
+                placeholder="Write your message here..."
+                value={newMessage}
+                onChange={(e) => setNewMessage(e.target.value)}
+              />
+            </Form.Group>
+            <div className="text-left">
+              <Button
+                type="submit"
+                style={{ backgroundColor: Colors.wineRed }}
+                variant="dark"
+                disabled={!newMessage.trim()}
+              >
+                Send
+              </Button>
+            </div>
+          </Form>
+        </Col>
+      </Row>
     </Container>
   );
 };

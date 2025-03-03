@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
 import CustomHeader from '../../components/header/CustomHeader';
@@ -6,6 +6,7 @@ import CustomCard from '../../components/card/CustomCard';
 import useBookcase from '../../hooks/useBookcase';
 import BookDetailCard from '../../components/card/BookDetailCard';
 import LoadingSpinner from '../../components/spinner/LoadingSpinner';
+import CustomGrid from '../../components/grid/CustomGrid';
 import { Colors } from '../../config';
 
 import './BookcaseView.css';
@@ -55,7 +56,12 @@ const BookcaseView = () => {
   return (
     <Container className="bookcase-view-container">
       <Row className="mb-4">
-        <CustomHeader color={Colors.navyBlue} text="My Bookcase" size="xlg" />
+        <CustomHeader
+          isPacifico
+          color={Colors.navyBlue}
+          text="My Bookcase"
+          size="xlg"
+        />
       </Row>
       <Row
         data-testid="reading-now-container"
@@ -64,7 +70,12 @@ const BookcaseView = () => {
         {currentlyReading && (
           <Col className="reading-now mb-4" lg={5} xs={12}>
             <div className="mb-3">
-              <CustomHeader text="Reading Now..." />
+              <CustomHeader
+                text="Reading Now..."
+                alignLeft
+                color={Colors.brunswickGreen}
+                size="lg"
+              />
             </div>
             <BookDetailCard
               isBookcaseView={true}
@@ -77,7 +88,7 @@ const BookcaseView = () => {
           xs={12}
           className="d-flex flex-wrap justify-content-around"
         >
-          {customBookCards}
+          <CustomGrid items={customBookCards} />
         </Col>
       </Row>
     </Container>
