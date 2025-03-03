@@ -68,7 +68,9 @@ const HomeView = () => {
       <Row className="mb-4">
         <CustomHeader
           text={
-            user.nickname ? `Welcome back, ${user.nickname}!` : 'Welcome home!'
+            user && user.nickname
+              ? `Welcome back, ${user.nickname}!`
+              : 'Welcome home!'
           }
           isPacifico
           size="xlg"
