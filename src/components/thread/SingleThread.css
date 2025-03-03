@@ -4,7 +4,8 @@
   border-radius: 8px;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
     rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-  margin: 10px;
+  margin: 10px auto;
+  padding: 20px;
 }
 
 .thread-header {
@@ -31,6 +32,7 @@
   display: grid;
   grid-template-columns: 1fr max-content;
   align-items: start;
+  gap: 10px;
 }
 
 .message-bubble:hover {
@@ -51,14 +53,61 @@
   background-color: var(--cream);
   border-top: 1px solid #ccc;
   border-radius: 0 0 8px 8px;
+  padding: 20px;
 }
 
 .header-container {
-  display: grid;
-  grid-template-columns: max-content 1fr;
+  justify-content: space-between;
+  gap: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .icon-title {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 20px;
   align-items: center;
-  display: flex;
+}
+
+@media (max-width: 600px) {
+  .single-thread-container {
+    max-width: 95%;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 10px;
+  }
+
+  .thread-header {
+    padding: 10px 0;
+  }
+
+  .thread-subtitle {
+    font-size: 14pt;
+    text-align: left;
+  }
+
+  .header-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .icon-title {
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  .messages-feed {
+    max-height: 50vh;
+  }
+
+  .message-bubble {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
+  .send-message-area {
+    padding: 10px;
+  }
 }
