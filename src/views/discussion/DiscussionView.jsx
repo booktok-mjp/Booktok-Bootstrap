@@ -34,8 +34,14 @@ const DiscussionView = () => {
       <Row>
         {/* My Threads Section */}
         <Col lg={5} className="mb-4">
-          <Card className="shadow-sm" style={{ backgroundColor: Colors.cream }}>
-            <Card.Header className="d-flex justify-content-between align-items-center">
+          <Card
+            className="shadow-sm "
+            style={{
+              backgroundColor: Colors.cream,
+              border: '2px solid rgba(0, 0, 0, 0.702)',
+            }}
+          >
+            <Card.Header className="d-flex justify-content-between align-items-center p-3">
               <CustomHeader
                 color={Colors.darkSlate}
                 text="My Threads"
@@ -71,8 +77,14 @@ const DiscussionView = () => {
 
         {/* Discover Section */}
         <Col lg={7} className="mb-4">
-          <Card className="shadow-sm" style={{ backgroundColor: Colors.cream }}>
-            <Card.Header>
+          <Card
+            className="shadow-sm "
+            style={{
+              backgroundColor: Colors.cream,
+              border: '2px solid rgba(0, 0, 0, 0.702)',
+            }}
+          >
+            <Card.Header className="p-3">
               <CustomHeader
                 color={Colors.wineRed}
                 text="Latest Topics"

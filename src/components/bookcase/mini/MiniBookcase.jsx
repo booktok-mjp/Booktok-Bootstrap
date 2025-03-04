@@ -31,7 +31,7 @@ const MiniBookcase = ({ books, fetchBookcase }) => {
       : [];
 
   return (
-    <Card className="minicase-card-container shadow-sm w-100">
+    <Card className="minicase-card-container shadow-lg w-100">
       <Card.Img variant="top" src={bookImg} className="minicase-img" />
       <Card.Body className="minicase-body">
         <div className="d-flex align-items-center">

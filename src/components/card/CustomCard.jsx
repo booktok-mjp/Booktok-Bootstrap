@@ -53,7 +53,7 @@ const CustomCard = ({
 
   return (
     <>
-      <Card bg="light" className="mb-5 custom-card shadow-sm">
+      <Card bg="light" className="mb-5 custom-card shadow-lg">
         <div className="custom-card-img-container">
           <Card.Img
             variant="top"

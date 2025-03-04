@@ -12,7 +12,10 @@ const ThreadListItem = ({ thread }) => {
     <ListGroupItem
       as="li"
       className="d-flex justify-content-between align-items-start mb-2 item-container"
-      style={{ backgroundColor: Colors.ivory }}
+      style={{
+        backgroundColor: Colors.ivory,
+        borderBottom: '1px solid rgba(0, 0, 0, 0.702)',
+      }}
       action={true}
     >
       <div className="ms-2 me-auto">

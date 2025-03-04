@@ -11,10 +11,12 @@
   --navy-blue: #2c3e50;
   --soft-gold: #d4af37;
   --cream: #faf3e0;
+  --cream-transparent: #d7f6e097;
   --wine-red: #8b0000;
   --forest-green: #2e8b57;
   --dark-slate: #2f4f4f;
   --ivory: #fffff0;
+  --ivory-transparent: #fffff0;
   --paynes-gray: #3d5c6cff;
   --dark-slate-gray: #355456ff;
   --brunswick-green: #2c4c3fff;
@@ -22,6 +24,7 @@
   --bone: #dbcec2ff;
   --beaver: #977e70ff;
   --beaver-2: #a08a7dff;
+  --white: #fffaf2;
 }
 
 .new-amsterdam-regular {

@@ -11,6 +11,7 @@ import { addMessageToThread } from '../../services/threadService';
 import { Colors } from '../../config';
 
 import './SingleThread.css';
+import ReactIconButton from '../button/ReactIconButton';
 
 const SingleThread = ({ threadId }) => {
   const { thread, loading, refetchThread } = useThreadById(threadId);
@@ -41,13 +42,17 @@ const SingleThread = ({ threadId }) => {
     <Container fluid className="single-thread-container my-4">
       <Row className="thread-header p-3 mb-3">
         <Col>
-          <div className="header-container mb-2">
+          <div className="header-container mb-3">
             <div className="icon-title">
-              <SlSpeech size={30} className="me-2" color={Colors.wineRed} />
+              <ReactIconButton
+                size="lg"
+                icon={<SlSpeech size={30} />}
+                bgColor={Colors.wineRed}
+              />
               <CustomHeader
                 text={thread.title}
                 size="lg"
-                color={Colors.wineRed}
+                color={Colors.brunswickGreen}
                 alignLeft
               />
             </div>
@@ -56,9 +61,11 @@ const SingleThread = ({ threadId }) => {
             </p>
           </div>
           {thread.subject && (
-            <div className="message-bubble mb-3">
-              <span className="mb-0">{thread.subject}</span>
-              <span className="text-muted w-fit">10 mins ago</span>
+            <div className="subject-container">
+              <div className="message-bubble mb-3">
+                <span className="mb-0">{thread.subject}</span>
+              </div>
+              <span className="post-time text-muted">Posted 4 days ago</span>
             </div>
           )}
         </Col>
@@ -87,7 +94,7 @@ const SingleThread = ({ threadId }) => {
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="newMessage" className="mb-3">
               <Form.Control
-                style={{ backgroundColor: Colors.ivory }}
+                style={{ backgroundColor: 'var(--white)', border: '1px solid' }}
                 as="textarea"
                 rows={5}
                 placeholder="Write your message here..."

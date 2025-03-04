@@ -1,14 +1,14 @@
-import React from 'react';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { IconContext } from 'react-icons';
 
 import './IconButton.css';
-import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 const ReactIconButton = ({
   icon: Icon,
   onClick,
   size = 'sm',
   color = 'white',
+  disabled = false,
   bgColor = 'var(--wine-red)',
   tooltipText,
 }) => {
@@ -20,6 +20,7 @@ const ReactIconButton = ({
   return (
     <OverlayTrigger placement="right" overlay={renderTooltip}>
       <button
+        disabled={disabled}
         onClick={onClick}
         className={`icon-btn ${size}`}
         style={{ backgroundColor: bgColor, color: color }}

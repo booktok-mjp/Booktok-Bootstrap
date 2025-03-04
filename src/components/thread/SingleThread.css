@@ -2,6 +2,7 @@
   max-width: 900px;
   background-color: var(--cream);
   border-radius: 8px;
+  border: 2px solid rgba(0, 0, 0, 0.702);
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
     rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   margin: 10px auto;
@@ -9,7 +10,7 @@
 }
 
 .thread-header {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.649);
 }
 
 .thread-subtitle {
@@ -18,16 +19,25 @@
   text-align: end;
 }
 
+.subject-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-time {
+  align-self: flex-end;
+}
+
 .messages-feed {
   max-height: 60vh;
   overflow-y: auto;
-  border-bottom: 1px solid #ccc;
 }
 
 .message-bubble {
-  background-color: #cccccc5a;
+  background-color: var(--white);
   border-radius: 6px;
-  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.653);
+  padding: 20px;
   transition: transform 0.3s ease;
   display: grid;
   grid-template-columns: 1fr max-content;
@@ -51,7 +61,7 @@
 
 .send-message-area {
   background-color: var(--cream);
-  border-top: 1px solid #ccc;
+  border-top: 2px solid rgba(0, 0, 0, 0.653);
   border-radius: 0 0 8px 8px;
   padding: 20px;
 }
@@ -74,8 +84,6 @@
   .single-thread-container {
     max-width: 95%;
     margin: 0;
-    border-radius: 0;
-    box-shadow: none;
     padding: 10px;
   }
 
